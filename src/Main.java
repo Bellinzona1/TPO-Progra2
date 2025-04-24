@@ -6,55 +6,63 @@ import Modelo.Vehiculo;
 public class Main {
     public static void main(String[] args) {
 
-
-
         // PERSONAS
-
-        Persona Mateo = new Persona("Mateo", "Bellinzona", 20);
-        Persona TobiPelado = new Persona("Tobias", "Bonomo", 17); // 17 años de aporte
-        Persona Benja = new Persona("Benja", "Cohen Bar-Natán Tercero", 30);
-
+        Persona mateo = new Persona("Mateo", "Bellinzona", 20);
+        Persona tobi = new Persona("Tobias", "Bonomo", 17);
+        Persona benja = new Persona("Benja", "Cohen Bar-Natán Tercero", 30);
+        Persona lucas = new Persona("Lucas", "Ramirez", 28);
 
         // VEHICULOS
-        Vehiculo vehiculo = new Vehiculo("Fiat", "Idea", "HDD407");
-        Vehiculo vehiculo1 = new Vehiculo("BMW", "320i sedan Sportline", "ACM 001 PT");
-        Vehiculo vehiculo2 = new Vehiculo("porsche", "911 GT", "123-45-678");
+        Vehiculo fiat = new Vehiculo("Fiat", "Idea", "HDD407");
+        Vehiculo bmw = new Vehiculo("BMW", "320i sedan Sportline", "LLD123");
+        Vehiculo porsche = new Vehiculo("Porsche", "911 GT", "123-45-678");
+        Vehiculo audi = new Vehiculo("Audi", "A3", "AUD321");
+        Vehiculo vw = new Vehiculo("Volkswagen", "Gol Trend", "VWT999");
 
+        // ASIGNACIONES
+        mateo.AgregarVehiculo(fiat);
+        tobi.AgregarVehiculo(bmw);
+        benja.AgregarVehiculo(porsche);
+        benja.AgregarVehiculo(audi);
+        benja.AgregarVehiculo(fiat);
+        lucas.AgregarVehiculo(vw);
+        lucas.AgregarVehiculo(bmw); // vehículo repetido intencionalmente
 
-        // ACCIONES
-
-        Mateo.AgregarVehiculo(vehiculo);
-        TobiPelado.AgregarVehiculo(vehiculo1);
-        Benja.AgregarVehiculo(vehiculo2);
-
-            // benja se afana todos los autos
-                Benja.AgregarVehiculo(vehiculo);
-                Benja.AgregarVehiculo(vehiculo1);
-
-
-
-
-        // PRINTS
-
-        System.out.println("Autos Mateo: ---------------------------------------------");
-        Mateo.getVehiculos();
+        // MOSTRAR LISTAS
+        System.out.println("Autos de Mateo:");
+        mateo.getVehiculos();
         System.out.println();
 
-
-        System.out.println("Autos Pelado: ---------------------------------------------");
-        TobiPelado.getVehiculos();
+        System.out.println("Autos de Tobi:");
+        tobi.getVehiculos();
+        System.out.println("Buscando vehículo 'LLD123'...");
+        tobi.BuscarVehiculo("LLD123");
         System.out.println();
 
-        System.out.println("Autos Benja de Nazaret: ---------------------------------------------");
-        Benja.getVehiculos();
+        System.out.println("Autos de Benja:");
+        benja.getVehiculos();
+        System.out.println("Mostrando en orden inverso:");
+        benja.MostrarVehiculosInverso();
+        System.out.println("Eliminando vehículo con patente 'HDD407'...");
+        benja.EliminarVehiculo("HDD407");
+        System.out.println("Lista luego de eliminar:");
+        benja.getVehiculos();
         System.out.println();
 
+        System.out.println("Autos de Lucas:");
+        lucas.getVehiculos();
+        System.out.println("Vaciando lista de vehículos de Lucas...");
+        lucas.VaciarVehiculos();
+        lucas.getVehiculos();
 
-
-
-
-
-
+        // Buscando desde final
+        System.out.println("Benja busca '123-45-678' desde el final:");
+        String encontrado = benja.getVehiculosLista().buscarDesdeFinal("123-45-678");
+        if (encontrado != null) {
+            System.out.println("Encontrado: " + encontrado);
+        } else {
+            System.out.println("No se encontró el vehículo.");
+        }
 
     }
 }

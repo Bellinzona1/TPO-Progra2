@@ -17,7 +17,6 @@ public class Vehiculo {
     // Getters
 
     public String getMarca() {
-       // Si pinta lo printeas System.out.println(marca);
         return marca;
     }
 

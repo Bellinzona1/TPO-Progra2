@@ -1,28 +1,33 @@
 package Modelo;
 
 public class Nodo {
+    private Vehiculo vehiculo;
+    private Nodo sigNodo;
+    private Nodo antNodo; // Nuevo atributo
 
-    private Vehiculo Vehiculo;
-    private Nodo SigNodo;
-
-
-    public Nodo(Vehiculo Vehiculo) {
-        this.Vehiculo = Vehiculo;
-        this.SigNodo = null;
+    public Nodo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
+        this.sigNodo = null;
+        this.antNodo = null;
     }
 
     public Vehiculo getVehiculo() {
-        return Vehiculo;
+        return vehiculo;
     }
 
     public Nodo getSigNodo() {
-        return SigNodo;
+        return sigNodo;
     }
 
     public void setSigNodo(Nodo sigNodo) {
-        SigNodo = sigNodo;
+        this.sigNodo = sigNodo;
     }
 
+    public Nodo getAntNodo() {
+        return antNodo;
+    }
 
-
+    public void setAntNodo(Nodo antNodo) {
+        this.antNodo = antNodo;
+    }
 }

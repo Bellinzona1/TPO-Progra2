@@ -39,4 +39,20 @@ public class Persona {
     public void BuscarVehiculo(String Patente) {
         vehiculosLista.buscarVehiculo(Patente);
     }
+
+    public void EliminarVehiculo(String patente) {
+        vehiculosLista.eliminarVehiculo(patente);
+    }
+
+    public void MostrarVehiculosInverso() {
+        vehiculosLista.mostrarListaInversa();
+    }
+
+    public void VaciarVehiculos() {
+        vehiculosLista.vaciarLista();
+    }
+
+    public Lista getVehiculosLista() {
+        return vehiculosLista;
+    }
 }
