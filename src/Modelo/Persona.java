@@ -6,13 +6,15 @@ public class Persona {
     private String apellido;
     private int edad;
     private Lista vehiculosLista = new Lista();
+    private int dni;
 
 
 
-    public Persona(String nombre, String apellido, int edad) {
+    public Persona(String nombre, String apellido, int edad, int dni) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
+        this.dni = dni;
 
     }
 
@@ -22,6 +24,10 @@ public class Persona {
 
     public int getEdad() {
         return edad;
+    }
+
+    public int getDni() {
+        return dni;
     }
 
     public String getApellido() {

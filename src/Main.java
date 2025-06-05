@@ -1,16 +1,20 @@
 import Modelo.Persona;
 import Modelo.Vehiculo;
+import Modelo.ArbolPersonas;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
 
+
+        // Si se corre ArbolPersonasGUI hay una interfaz gráfica para visualizar el árbol de personas.
+
         // PERSONAS
-        Persona mateo = new Persona("Mateo", "Bellinzona", 20);
-        Persona tobi = new Persona("Tobias", "Bonomo", 17);
-        Persona benja = new Persona("Benja", "Cohen Bar-Natán Tercero", 30);
-        Persona lucas = new Persona("Lucas", "Ramirez", 28);
+        Persona mateo = new Persona("Mateo", "Bellinzona", 20, 45628300);
+        Persona tobi = new Persona("Tobias", "Bonomo", 17, 47797293);
+        Persona benja = new Persona("Benja", "Cohen Bar-Natán Tercero", 30, 26654921);
+        Persona lucas = new Persona("Lucas", "Ramirez", 28,872239372);
 
         // VEHICULOS
         Vehiculo fiat = new Vehiculo("Fiat", "Idea", "HDD407");
@@ -63,6 +67,51 @@ public class Main {
         } else {
             System.out.println("No se encontró el vehículo.");
         }
+
+        // --- DEMOSTRACIÓN ÁRBOL DE PERSONAS ---
+        ArbolPersonas arbol = new ArbolPersonas();
+        Persona[] personas = {
+                new Persona("Mateo", "Bellinzona", 20, 45628300),
+                new Persona("Tobias", "Bonomo", 17, 47797293),
+                new Persona("Benja", "Cohen", 30, 26654921),
+                new Persona("Lucas", "Ramirez", 28, 87223937),
+                new Persona("Ana", "Gomez", 25, 12345678),
+                new Persona("Juan", "Perez", 40, 23456789),
+                new Persona("Maria", "Lopez", 35, 34567890),
+                new Persona("Pedro", "Martinez", 50, 45678901),
+                new Persona("Sofia", "Diaz", 22, 56789012),
+                new Persona("Carlos", "Sanchez", 29, 67890123),
+                new Persona("Laura", "Fernandez", 33, 78901234),
+                new Persona("Diego", "Torres", 27, 89012345),
+                new Persona("Valentina", "Mendez", 31, 90123456),
+                new Persona("Martin", "Suarez", 26, 11223344),
+                new Persona("Florencia", "Rios", 24, 22334455)
+        };
+        // Insertar 15 personas
+        for (Persona p : personas) {
+            arbol.insertar(p);
+        }
+        System.out.println("\nÁrbol por DNI (inicial):");
+        arbol.mostrarInorden();
+        arbol.mostrarPreorden();
+        arbol.mostrarPostorden();
+
+        // Buscar por DNI
+        Persona buscarDni = new Persona("", "", 0, 45628300); // Mateo
+        System.out.println("\nBuscando persona con DNI 45628300:");
+        Persona encontrada = arbol.buscar(buscarDni);
+        if (encontrada != null) {
+            System.out.println("Encontrada: " + encontrada.getNombre() + " " + encontrada.getApellido());
+        } else {
+            System.out.println("No encontrada");
+        }
+
+        // Eliminar por DNI
+        System.out.println("\nEliminando persona con DNI 45628300 (Mateo)...");
+        arbol.eliminar(buscarDni);
+        arbol.mostrarInorden();
+
+
 
     }
 }
