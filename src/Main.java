@@ -113,5 +113,37 @@ public class Main {
 
 
 
+        // --- GRAFO DE PERSONAS ---
+        System.out.println("\n--- GRAFO DE PERSONAS ---");
+        Modelo.Grafo<Persona> grafo = new Modelo.Grafo<>(true); // true = dirigido
+        // Agregar nodos
+        Modelo.NodoGrafo<Persona> nMateo = grafo.agregarNodo(mateo);
+        Modelo.NodoGrafo<Persona> nTobi = grafo.agregarNodo(tobi);
+        Modelo.NodoGrafo<Persona> nBenja = grafo.agregarNodo(benja);
+        Modelo.NodoGrafo<Persona> nLucas = grafo.agregarNodo(lucas);
+        // Agregar aristas (conexiones)
+        grafo.agregarArista(nMateo, nTobi);
+        grafo.agregarArista(nTobi, nBenja);
+        grafo.agregarArista(nBenja, nLucas);
+        grafo.agregarArista(nLucas, nMateo); // ciclo
+        // Recorrido DFS
+        System.out.println("Recorrido DFS desde Mateo:");
+        for (Persona p : grafo.recorridoDFS(nMateo)) {
+            System.out.println(p.getNombre());
+        }
+        // Recorrido BFS
+        System.out.println("Recorrido BFS desde Mateo:");
+        for (Persona p : grafo.recorridoBFS(nMateo)) {
+            System.out.println(p.getNombre());
+        }
+        // Matriz de adyacencia
+        System.out.println("Matriz de adyacencia:");
+        int[][] matriz = grafo.matrizAdyacencia();
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                System.out.print(matriz[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
 }
